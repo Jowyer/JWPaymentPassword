@@ -10,6 +10,12 @@
 
 @implementation JWPaymentAlertView
 
+- (void)dealloc
+{
+    self.leftAction = nil;
+    self.rightAction = nil;
+}
+
 - (void)show {
     CGRect storyboardFrame = self.passwordView.frame;
     self.passwordView = [[[NSBundle mainBundle] loadNibNamed:@"JWPaymentPasswordView" owner:self options:nil] objectAtIndex:0];

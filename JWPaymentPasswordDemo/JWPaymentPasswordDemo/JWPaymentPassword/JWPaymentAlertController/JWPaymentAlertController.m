@@ -7,7 +7,6 @@
 //
 
 #import "JWPaymentAlertController.h"
-#import "JWPaymentAlertView.h"
 
 @implementation JWPaymentAlertController
 
@@ -23,19 +22,19 @@
 }
 
 - (void)showWithTitle:(NSString *)title Message:(NSString *)message LeftOption:(JWAlertAction *)leftAction RightOption:(JWAlertAction *)rightAction {
-    JWPaymentAlertView *alertView = [[[NSBundle mainBundle] loadNibNamed:@"JWPaymentAlertView" owner:self options:nil] objectAtIndex:0];
+    self.alertView = [[[NSBundle mainBundle] loadNibNamed:@"JWPaymentAlertView" owner:self options:nil] objectAtIndex:0];
     
-    alertView.titleLabel.text = title;
-    alertView.messageLabel.text = message;
-    alertView.leftAction = leftAction;
-    alertView.rightAction = rightAction;
+    self.alertView.titleLabel.text = title;
+    self.alertView.messageLabel.text = message;
+    self.alertView.leftAction = leftAction;
+    self.alertView.rightAction = rightAction;
     
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    alertView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
+    self.alertView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
     
-    [[UIApplication sharedApplication].delegate.window addSubview:alertView];
+    [[UIApplication sharedApplication].delegate.window addSubview:self.alertView];
     
-    [alertView show];
+    [self.alertView show];
 }
 
 @end

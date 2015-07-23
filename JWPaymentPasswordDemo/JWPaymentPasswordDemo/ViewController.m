@@ -21,7 +21,10 @@
 - (IBAction)showAlert:(id)sender {
     JWAlertAction *leftAction = [JWAlertAction actionWithStyle:jwaasNormal Title:@"Cancel" handler:NULL];
     JWAlertAction *rightAction = [JWAlertAction actionWithStyle:jwaasStressed Title:@"Confirm" handler:^{
-        NSLog(@"Confirm Tapped");
+        JWPaymentPasswordView *passwordView = [JWPaymentAlertController sharedController].alertView.passwordView;
+        if (passwordView.isFinished) {
+            NSLog(@"password : %@", passwordView.hiddenTF.text);
+        }
     }];
     [[JWPaymentAlertController sharedController] showWithTitle:@"Payment Password" Message:@"6 characters" LeftOption:leftAction RightOption:rightAction];
 }

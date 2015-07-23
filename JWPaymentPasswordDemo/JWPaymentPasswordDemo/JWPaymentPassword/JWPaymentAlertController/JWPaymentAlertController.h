@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "JWAlertAction.h"
+#import "JWPaymentAlertView.h"
 
 @interface JWPaymentAlertController : NSObject
+
+@property (weak, nonatomic) JWPaymentAlertView *alertView;
 
 + (JWPaymentAlertController *)sharedController;
 

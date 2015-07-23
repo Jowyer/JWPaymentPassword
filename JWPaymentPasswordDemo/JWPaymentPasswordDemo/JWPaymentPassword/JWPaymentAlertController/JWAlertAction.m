@@ -10,6 +10,12 @@
 
 @implementation JWAlertAction
 
+- (void)dealloc
+{
+    self.title = nil;
+    self.handler = nil;
+}
+
 + (instancetype)actionWithStyle:(JWAlertActionStyle)style Title:(NSString *)title handler:(JWBlock)handler {
     JWAlertAction *action = [JWAlertAction new];
     action.actionStyle = style;
