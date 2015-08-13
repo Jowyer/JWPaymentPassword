@@ -26,6 +26,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - Public Methods
 - (void)setViewBackgroundColor:(UIColor *)bgColor BorderColor:(UIColor *)borderColor DotColor:(UIColor *)dotColor {
     JWPPDotView *dot1 = (JWPPDotView *)[self viewWithTag:1];
     JWPPDotView *dot2 = (JWPPDotView *)[self viewWithTag:2];
@@ -51,6 +52,16 @@
     myBlock = handler;
 }
 
+- (void)resetPaymentPasswordView {
+    self.hiddenTF.text = @"";
+    for (JWPPDotView *dot in dotsArray) {
+        dot.filled = NO;
+    }
+    
+    [self.hiddenTF becomeFirstResponder];
+}
+
+#pragma mark - Private Methods
 - (void)handleNotification:(NSNotification *)notification {
     NSInteger count = self.hiddenTF.text.length;
     for (JWPPDotView *dot in dotsArray) {

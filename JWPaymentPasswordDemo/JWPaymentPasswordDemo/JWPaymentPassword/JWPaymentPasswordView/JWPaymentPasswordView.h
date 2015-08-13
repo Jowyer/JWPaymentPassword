@@ -21,4 +21,5 @@ typedef void(^JWBoolBlock)(BOOL isTrue);
 
 - (void)setFlagDidChangeHandler:(JWBoolBlock)handler;
 
+- (void)resetPaymentPasswordView;
 @end
